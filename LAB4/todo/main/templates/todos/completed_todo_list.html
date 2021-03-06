@@ -1,0 +1,41 @@
+{% extends 'todos/todo_list.html' %}
+{% block content %}
+<h2>Changed tasks</h2>
+<button type="button" class="btn btn-primary">Add Task</button>
+<table class="table">
+<thead class="thead-inverse">
+  <tr>
+      <th>Task</th>
+      <th>Name</th>
+      <th>time_cre</th>
+      <th>time_upd</th>
+      <th>finished</th>
+  </tr>
+</thead>
+<tbody>
+{% for todo in todo_list %}
+  <tr>
+  <td>
+    {{ todo.name }}
+  </td>
+  <td>
+    {{ todo.time_cre }}
+  </td>
+  <td>
+    {{ todo.time_upd }}
+  </td>
+  <td>
+    {{ todo.finished }}
+  </td>
+  <td>
+    <button class="btn btn-info">{{ todo.name }}</button>
+  </td>
+  </tr>
+                        {% csrf_token %}
+    <input type="checkbox" name="finished" onchange="this.form.submit()" {% if todo.finished %} checked
+      {% endif %} class="todo-status-checkbox"
+      title="{% if not todo.finished %} mark as done {% else %} mark undone {% endif %}">
+        {% endfor %}
+    </tbody>
+        </table>
+    {% endblock %}
