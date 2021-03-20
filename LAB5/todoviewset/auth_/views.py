@@ -14,21 +14,21 @@ class RegistrationAPIView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = RegistrationSerializer
 
-    # def create(self, request):
-    #     """
-    #     create user
-    #     :param request:
-    #     :return:
-    #     """
-    #     serializer = self.serializer_class(data=request.data)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-    #     return Response(
-    #         {
-    #             'token': serializer.data.get('token', None),
-    #         },
-    #         status=status.HTTP_201_CREATED
-    #     )
+# def create(self, request):
+#     """
+#     create user
+#     :param request:
+#     :return:
+#     """
+#     serializer = self.serializer_class(data=request.data)
+#     serializer.is_valid(raise_exception=True)
+#     serializer.save()
+#     return Response(
+#         {
+#             'token': serializer.data.get('token', None),
+#         },
+#         status=status.HTTP_201_CREATED
+#     )
 
 class LoginAPIView(viewsets.ModelViewSet):
     permission_classes = [AllowAny]
